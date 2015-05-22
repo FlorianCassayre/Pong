@@ -1,0 +1,11 @@
+.classpath
+.project
+target
+.settings
+bin/
+nogit/
+*~
+
+# IntelliJ IDEA
+.idea/
+*.iml
