@@ -33,11 +33,12 @@ public class Window extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.addKeyListener(new KeyListener() {
-
+			// TODO Check gamemode
 			@Override
 			public void keyPressed(KeyEvent key) {
 				if(key.getKeyChar() == 'z') {
 					isFirstDown = true;
+					
 				} else if(key.getKeyChar() == 's') {
 					isFirstUp = true;
 				} else if(key.getKeyChar() == 'o') {
@@ -109,5 +110,21 @@ public class Window extends JFrame {
 
 	public boolean isSecondDown() {
 		return isSecondDown;
+	}
+
+	public void setSecondUp(boolean isSecondUp) {
+		this.isSecondUp = isSecondUp;
+	}
+
+	public void setSecondDown(boolean isSecondDown) {
+		this.isSecondDown = isSecondDown;
+	}
+
+	public void setFirstUp(boolean isFirstUp) {
+		this.isFirstUp = isFirstUp;
+	}
+
+	public void setFirstDown(boolean isFirstDown) {
+		this.isFirstDown = isFirstDown;
 	}
 }

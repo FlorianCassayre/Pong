@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import me.cassayre.florian.Pong.Pong;
+import me.cassayre.florian.Pong.game.GameType;
 import me.cassayre.florian.Pong.gui.element.Element;
 import me.cassayre.florian.Pong.utils.GraphicsUtils;
 
@@ -27,7 +28,7 @@ public class BasicGameElement extends Element {
 
 	@Override
 	public boolean onClick() {
-		pong.startGame();
+		pong.startGame(GameType.NORMAL);
 		return true;
 	}
 

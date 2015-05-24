@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import me.cassayre.florian.Pong.Pong;
+import me.cassayre.florian.Pong.game.GameType;
 import me.cassayre.florian.Pong.gui.element.Element;
 import me.cassayre.florian.Pong.gui.message.BasicMessage;
 import me.cassayre.florian.Pong.utils.GraphicsUtils;
@@ -28,8 +29,8 @@ public class CPUElement extends Element {
 
 	@Override
 	public boolean onClick() {
-		pong.getWindow().setCurrentMessage(new BasicMessage(pong, "Ce mode de jeu n'est pas encore disponible !"));
-		return false;
+		pong.startGame(GameType.COMPUTER);
+		return true;
 	}
 
 }

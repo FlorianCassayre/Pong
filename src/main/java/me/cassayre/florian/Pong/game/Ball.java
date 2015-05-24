@@ -20,7 +20,7 @@ import me.cassayre.florian.Pong.Pong;
 import me.cassayre.florian.Pong.utils.Direction;
 import me.cassayre.florian.Pong.window.Paintable;
 
-public class Ball implements Paintable {
+public class Ball implements Paintable, Cloneable {
 	
 	private final Pong pong;
 	private final Point spawnAt;
@@ -62,7 +62,7 @@ public class Ball implements Paintable {
 			x += speed * Math.cos(direction);
 			y += speed * Math.sin(direction);
 		} else { // Hit something
-			try { // TODO
+			/*try { // TODO
 				clip = AudioSystem.getClip();
 				in = new FileInputStream(basicSound);
 				inputStream = AudioSystem.getAudioInputStream(basicSound);
@@ -76,7 +76,7 @@ public class Ball implements Paintable {
 				e.printStackTrace();
 			} catch (LineUnavailableException e) {
 				e.printStackTrace();
-			}
+			}*/
 			direction = normalizeAngle(direction + deviation);
 			if(hit == Direction.HORIZONTAL) { // Wall
 				direction = Math.PI - direction;
@@ -132,4 +132,12 @@ public class Ball implements Paintable {
 	public void setStopped(boolean stop) {
 		this.stop = stop;
 	}
+	
+	public double getDirection() {
+		return normalizeAngle(this.direction);
+	}
+	
+	protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

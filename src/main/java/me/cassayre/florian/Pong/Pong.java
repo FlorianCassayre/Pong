@@ -1,6 +1,7 @@
 package me.cassayre.florian.Pong;
 
 import me.cassayre.florian.Pong.game.GameLoop;
+import me.cassayre.florian.Pong.game.GameType;
 import me.cassayre.florian.Pong.gui.displayers.MainMenu;
 import me.cassayre.florian.Pong.gui.displayers.ScoreGui;
 import me.cassayre.florian.Pong.window.DrawerLoop;
@@ -10,7 +11,7 @@ import me.cassayre.florian.Pong.window.Window;
 public class Pong {
 	
 	private final Window window = new Window(this);
-	private final GameLoop gameLoop = new GameLoop(this);
+	private GameLoop gameLoop = new GameLoop(this, GameType.NORMAL);
 	private final DrawerLoop drawerLoop = new DrawerLoop(this);
 	private final FPSManager fpsManager = new FPSManager(this);
 	private boolean isPlaying = true;
@@ -46,7 +47,8 @@ public class Pong {
 		return fpsManager;
 	}
 
-	public void startGame() {
+	public void startGame(GameType type) {
+		gameLoop = new GameLoop(this, type);
 		gameLoop.start();
 	}
 	

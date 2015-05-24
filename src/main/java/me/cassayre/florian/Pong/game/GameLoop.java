@@ -20,7 +20,7 @@ public class GameLoop extends Thread {
 	
 	private boolean ready = false;
 	
-	public GameLoop(Pong pong) {
+	public GameLoop(Pong pong, GameType game) {
 		this.pong = pong;
 		
 		this.X_MIN = 80;
@@ -31,7 +31,11 @@ public class GameLoop extends Thread {
 		this.racket1 = new Racket(pong, new Point(60, (int) (pong.getWindow().getContentPane().getSize().getHeight() / 2 - 50)), new Dimension(20, 100), Direction.VERTICAL, 50, (int) (pong.getWindow().getContentPane().getSize().getHeight() - 50));
 		this.racket2 = new Racket(pong, new Point((int) (pong.getWindow().getContentPane().getSize().getWidth() - 80), (int) (pong.getWindow().getContentPane().getSize().getHeight() / 2 - 50)), new Dimension(20, 100), Direction.VERTICAL, 50, (int) (pong.getWindow().getContentPane().getSize().getHeight() - 50));
 		
-		this.ball = new Ball(pong, new Point((int) (pong.getWindow().getContentPane().getSize().getWidth() / 2), (int) (pong.getWindow().getContentPane().getSize().getHeight() / 2)), 0);
+		if(game == GameType.COMPUTER) {
+			new ComputerPlayer(pong, racket2).start();
+		}
+		
+		this.ball = new Ball(pong, new Point((int) (pong.getWindow().getContentPane().getSize().getWidth() / 2), (int) (pong.getWindow().getContentPane().getSize().getHeight() / 2)), 1);
 	
 		this.ready = true;
 	}
